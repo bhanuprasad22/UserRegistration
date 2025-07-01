@@ -1,13 +1,22 @@
-import express from 'express';
+import express from "express";
 import cors from "cors";
-// import todoroutes from './routes/todoroutes.js';
+import cookieParser from "cookie-parser";
 
 
-const app= express();
+const app = express();
+
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.static("public"))
+app.use(cookieParser());
 
-// app.use('/api/v1/todos',todoroutes); 
+
+// routes import 
+import userRoute from "./routes/user.routes.js"
+
+
+// route declare
+app.use("/api/v1/users/", userRoute);
 
 export default app;
